@@ -7,7 +7,6 @@ Ext.define('Visum.view.Main', {
     ],
     config: {
         tabBarPosition: 'bottom',
-
         items: [{
             title: 'Home',
             iconCls: 'home',
