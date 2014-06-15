@@ -1,3 +1,4 @@
 touch/
 build/
 .sass-cache/
+resources/sass/.sass-cache/
