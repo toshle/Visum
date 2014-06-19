@@ -1,6 +1,6 @@
 Ext.define("Visum.view.GMap", {
     extend : "Ext.Map",
-    xtype  : 'myMap',
+    xtype  : 'gmap',
     config : {
         scroll: false,
         title              : 'Map',

@@ -2,8 +2,7 @@ Ext.define('Visum.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
-        'Ext.TitleBar',
-        'Ext.Video'
+        'Ext.TitleBar'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -24,7 +23,7 @@ Ext.define('Visum.view.Main', {
                 "Welcome to Visum."
             ].join("")
         }, {
-            xtype: 'myMap',
+            xtype: 'gmap',
 
             items: [{
                 docked: 'top',
@@ -40,24 +39,17 @@ Ext.define('Visum.view.Main', {
                 xtype: 'titlebar',
                 title: 'Augmented Reality'
             }, {
-                styleHtmlContent: true,
-                html: [
-                    "Aug Reality"
-                ].join("")
+                xtype: 'augreality'
             }]
         }, {
             title: 'Profile',
             iconCls: 'user',
-
             items: [{
                 docked: 'top',
                 xtype: 'titlebar',
-                title: 'User Profile'
+                title: 'Profile'
             }, {
-                styleHtmlContent: true,
-                html: [
-                    "Welcome to your profile"
-                ].join("")
+                xtype: 'profile'
             }]
         }]
     }

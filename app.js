@@ -19,7 +19,9 @@ Ext.application({
 
     views: [
         'Main',
-        'GMap'
+        'GMap',
+        'Profile',
+        'AugmentedReality'
     ],
 
     icon: {
