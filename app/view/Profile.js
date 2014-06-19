@@ -1,14 +1,15 @@
 Ext.define('Visum.view.Profile', {
-    extend: 'Ext.Container',
+    extend: 'Ext.List',
+    requires: [
+        'Visum.model.User',
+        'Visum.store.User'
+    ],
     xtype: 'profile',
     config: {
-        items: [{
-            title: 'Profile',
-            styleHtmlContent: true,
-            html: [
-                "Yay!<br>",
-                "New Profile page..."
-            ].join("")
-        }]
+        title: 'Profile',
+        styleHtmlContent: true,
+        scrollable: 'vertical',
+        store: 'User',
+        itemTpl: '{username}'
     }
 });

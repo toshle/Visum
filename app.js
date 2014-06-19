@@ -14,7 +14,8 @@ Ext.application({
     name: 'Visum',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Visum.model.User'
     ],
 
     views: [
@@ -22,6 +23,14 @@ Ext.application({
         'GMap',
         'Profile',
         'AugmentedReality'
+    ],
+
+    models: [
+        'User'
+    ],
+
+    stores: [
+        'User'
     ],
 
     icon: {
@@ -45,7 +54,6 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
         // Initialize the main view
         Ext.Viewport.add(Ext.create('Visum.view.Main'));
     },

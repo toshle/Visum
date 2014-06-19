@@ -24,7 +24,6 @@ Ext.define('Visum.view.Main', {
             ].join("")
         }, {
             xtype: 'gmap',
-
             items: [{
                 docked: 'top',
                 xtype: 'titlebar',
@@ -33,7 +32,6 @@ Ext.define('Visum.view.Main', {
         }, {
             title: 'Aug Reality',
             iconCls: 'eye',
-
             items: [{
                 docked: 'top',
                 xtype: 'titlebar',
