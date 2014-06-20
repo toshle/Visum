@@ -15,7 +15,8 @@ Ext.application({
 
     requires: [
         'Ext.MessageBox',
-        'Visum.model.User'
+        'Visum.model.User',
+        'Visum.store.UserStore'
     ],
 
     views: [
@@ -30,7 +31,7 @@ Ext.application({
     ],
 
     stores: [
-        'User'
+        'UserStore'
     ],
 
     icon: {
@@ -55,6 +56,23 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
         // Initialize the main view
+
+/*
+        var pr = Ext.create('Visum.view.Profile');
+        var store = Ext.create('Visum.store.UserStore', {
+            autoLoad: true,
+            model: 'Visum.model.User',
+            
+            listeners: {
+                load: function(self, records) {
+                    console.log(self);
+                    console.log(records);
+                    pr.setData(records[0].getData());
+                }
+            }
+        });
+
+        Ext.Viewport.add(pr);*/
         Ext.Viewport.add(Ext.create('Visum.view.Main'));
     },
 

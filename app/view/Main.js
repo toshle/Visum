@@ -42,6 +42,7 @@ Ext.define('Visum.view.Main', {
         }, {
             title: 'Profile',
             iconCls: 'user',
+            //xtype: 'profile',
             items: [{
                 docked: 'top',
                 xtype: 'titlebar',

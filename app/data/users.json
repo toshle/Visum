@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "53a3148534121c7524218a96",
+    "id": 1,
+    "username": "toshle",
+    "age": 20
+  },
+  {
+    "_id": "53a40e1d3546bf98067940e2",
+    "id": 2,
+    "username": "rosko",
+    "age": 20
+  },
+  {
+    "_id": "53a40e213546bf98067940e3",
+    "id": 3,
+    "username": "tapa",
+    "age": 20
+  },
+  {
+    "_id": "53a40e233546bf98067940e4",
+    "id": 4,
+    "username": "mortimer",
+    "age": 20
+  }
+]
