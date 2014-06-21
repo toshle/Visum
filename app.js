@@ -21,17 +21,20 @@ Ext.application({
 
     views: [
         'Main',
+        'Home',
         'GMap',
         'Profile',
         'AugmentedReality'
     ],
 
     models: [
-        'User'
+        'User',
+        'Poi'
     ],
 
     stores: [
-        'UserStore'
+        'UserStore',
+        'PoiStore'
     ],
 
     icon: {

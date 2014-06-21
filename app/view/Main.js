@@ -9,19 +9,13 @@ Ext.define('Visum.view.Main', {
         items: [{
             title: 'Home',
             iconCls: 'home',
-
-            styleHtmlContent: true,
-            scrollable: true,
-
-            items: {
+            items: [{
                 docked: 'top',
                 xtype: 'titlebar',
-                title: 'Home tab'
-            },
-
-            html: [
-                "Welcome to Visum."
-            ].join("")
+                title: 'Home'
+            }, {
+                xtype: 'home'
+            }]
         }, {
             xtype: 'gmap',
             items: [{
