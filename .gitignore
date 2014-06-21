@@ -1,4 +1,5 @@
 touch/
 build/
+cordova/
 .sass-cache/
 resources/sass/.sass-cache/
