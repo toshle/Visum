@@ -22,3 +22,8 @@
 
 // Examples of using the icon mixin:
 @include icon('eye');
+
+#augreality {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ccc;
+}

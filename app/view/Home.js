@@ -5,6 +5,7 @@ Ext.define('Visum.view.Home', {
         'Ext.dataview.List'
     ],
     config: {
+        
         title: 'Home',
         styleHtmlContent: true,
         layout: 'vbox',
@@ -30,7 +31,7 @@ Ext.define('Visum.view.Home', {
                         }, {
                             name: 'Национален Дворец на Културата - НДК'
                         }],
-                        itemTpl: new Ext.XTemplate('{name}')
+                        itemTpl: new Ext.XTemplate('{name} <br><a href="">Read more</a>')
                     }]
                 }, {
                     items: [{
@@ -45,7 +46,7 @@ Ext.define('Visum.view.Home', {
                         }, {
                             name: 'Doge has visited Sofia! Such news! MUCH information...'
                         }],
-                        itemTpl: new Ext.XTemplate('{name}')
+                        itemTpl: new Ext.XTemplate('{name} <br><a href="">Read more</a>')
                     }]
                 }]
             }, {
