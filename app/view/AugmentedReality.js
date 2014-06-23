@@ -15,13 +15,35 @@ Ext.define('Visum.view.AugmentedReality', {
                 html: [
                     "<select id='videoSource'></select><br>",
                     "<video id='augreality' autoplay></video><br>",
-                    "<div id='error'></div>"
+                    "<div id='error'></div><br>",
+                    "<div id='heading'>Heading ...</div>"
                 ].join("")
             }]
         }]
     },
     initialize: function() {
         this.on('painted', this.showVideo);
+        this.on('painted', this.startWatch);
+    },
+    startWatch: function() {
+        var watchID = null;
+
+        var element = document.querySelector("div#heading");
+
+        function onSuccess(heading) {
+            element.innerHTML = 'Heading: ' + heading.magneticHeading;
+        };
+
+        function onError(compassError) {
+            alert('Compass error: ' + compassError.code);
+        };
+
+        var options = {
+            frequency: 3000
+        }; // Update every 3 seconds
+        if (navigator.compass) {
+            watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+        }
     },
     showVideo: function() {
         var videoSelect = document.querySelector("select#videoSource");
