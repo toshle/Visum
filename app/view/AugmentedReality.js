@@ -14,7 +14,8 @@ Ext.define('Visum.view.AugmentedReality', {
                 flex: 1,
                 html: [
                     "<select id='videoSource'></select><br>",
-                    "<video id='augreality' autoplay></video>"
+                    "<video id='augreality' autoplay></video><br>",
+                    "<div id='error'></div>"
                 ].join("")
             }]
         }]
@@ -87,7 +88,11 @@ Ext.define('Visum.view.AugmentedReality', {
             start();
         } else {
             videoSelect.style.visibility = 'hidden';
-            alert('This OS doesn\'t support Augmented Reality!');
+            videoElement.style.visibility = 'hidden';
+
+            var error = document.querySelector("div#error");
+            error.innerHTML = 'Sorry. This OS doesn\'t support Augmented Reality!';
+            error.innerHTML += '<br> Augmented reality is meant for mobile devices only.';
         }
     }
 });
