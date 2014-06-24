@@ -8,10 +8,10 @@ Ext.define('Visum.view.Home', {
         title: 'Home',
         styleHtmlContent: true,
         layout: 'vbox',
-        scrollable: {
+        /*scrollable: {
             direction: 'vertical',
             directionLock: true
-        },
+        },*/
         preserveScrollOnRefresh: true,
         minHeight: '570px',
         items: [{
@@ -30,7 +30,7 @@ Ext.define('Visum.view.Home', {
                     title: 'Latest Points of Interest'
                 }, {
                     xtype: 'list',
-                    scrollable: false,
+                    //scrollable: false,
                     minHeight: '260px',
                     data: [{
                         name: 'Fantastico - Верен приятел'
@@ -46,7 +46,7 @@ Ext.define('Visum.view.Home', {
                     title: 'News'
                 }, {
                     xtype: 'list',
-                    scrollable: false,
+                    //scrollable: false,
                     minHeight: '260px',
                     data: [{
                         name: 'Extremely interesting news straight from the source.'
@@ -56,7 +56,7 @@ Ext.define('Visum.view.Home', {
                     itemTpl: new Ext.XTemplate('{name} <br><a href="">Read more</a>')
                 }]
             }]
-        }, {
+        }, /*{
             xtype: 'panel',
             items: [{
                 docked: 'top',
@@ -89,6 +89,6 @@ Ext.define('Visum.view.Home', {
                     text: 'Send'
                 }]
             }]
-        }]
+        }*/]
     }
 });
