@@ -5,6 +5,6 @@ Ext.define('Visum.model.Poi', {
     'Ext.data.proxy.JsonP'
   ],
   config: {
-    fields: ['_id', 'name', 'desc', 'lat', 'lon']
+    fields: ['_id', 'id', 'name', 'desc', 'lat', 'lon', 'dist', 'images', 'additional_info', 'videos', 'audio']
   }
 });

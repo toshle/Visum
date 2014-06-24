@@ -1,8 +1,17 @@
+/*  TODO
+    Fix distance calculation
+*/
 Ext.define('Visum.view.Home', {
     extend: 'Ext.Container',
     xtype: 'home',
     requires: [
-        'Ext.dataview.List'
+        'Ext.dataview.List',
+        'Visum.model.Poi',
+        'Visum.model.News',
+        'Ext.data.Store',
+        'Ext.device.Geolocation',
+        'Visum.store.LatestPoisStore',
+        'Visum.store.NewsStore'
     ],
     config: {
         title: 'Home',
@@ -12,51 +21,63 @@ Ext.define('Visum.view.Home', {
             direction: 'vertical',
             directionLock: true
         },*/
+        listeners: {
+            tap: {
+                fn: function(event, el) {
+                    /*var map = Ext.create('Visum.view.GMap', {
+                        useCurrentLocation: true
+                    });*/
+                    var me = this;
+                    var id = el.getAttribute('id');
+                    if (el.getAttribute('class') === 'poi modal') {
+                        this.fireEvent('firePoiEvent', me, id, null);
+                    } else if (el.getAttribute('class') === 'news modal') {
+                        this.fireEvent('fireNewsEvent', me, id);
+                    }
+                    //map.destroy();
+                },
+                element: 'element',
+                delegate: '.modal'
+            },
+        },
         preserveScrollOnRefresh: true,
         minHeight: '570px',
         items: [{
-            xtype: 'panel',
-            layout: 'hbox',
-            defaults: {
                 xtype: 'panel',
-                flex: 1,
-                minHeight: '300px',
-                margin: '5 5 5 5'
+                layout: 'hbox',
+                defaults: {
+                    xtype: 'panel',
+                    flex: 1,
+                    minHeight: '300px',
+                    margin: '5 5 5 5'
+                },
+                items: [{
+                    items: [{
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Latest Points of Interest'
+                    }, {
+                        xtype: 'list',
+                        //scrollable: false,
+                        store: 'LatestPoisStore',
+                        minHeight: '260px',
+                        itemTpl: new Ext.XTemplate('{name} - {desc}<br><button class="poi modal" id="{id}" type="button">Read more</button>')
+                    }]
+                }, {
+                    items: [{
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'News'
+                    }, {
+                        xtype: 'list',
+                        //scrollable: false,
+                        store: 'NewsStore',
+                        minHeight: '260px',
+                        itemTpl: new Ext.XTemplate('{title} <br><button class="news modal" id="{id}" type="button">Read more</button>')
+                    }]
+                }]
             },
-            items: [{
-                items: [{
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Latest Points of Interest'
-                }, {
-                    xtype: 'list',
-                    //scrollable: false,
-                    minHeight: '260px',
-                    data: [{
-                        name: 'Fantastico - Верен приятел'
-                    }, {
-                        name: 'Национален Дворец на Културата - НДК'
-                    }],
-                    itemTpl: new Ext.XTemplate('{name} <br><a href="">Read more</a>')
-                }]
-            }, {
-                items: [{
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'News'
-                }, {
-                    xtype: 'list',
-                    //scrollable: false,
-                    minHeight: '260px',
-                    data: [{
-                        name: 'Extremely interesting news straight from the source.'
-                    }, {
-                        name: 'Doge has visited Sofia! Such news! MUCH information...'
-                    }],
-                    itemTpl: new Ext.XTemplate('{name} <br><a href="">Read more</a>')
-                }]
-            }]
-        }, /*{
+            /*{
             xtype: 'panel',
             items: [{
                 docked: 'top',
@@ -89,6 +110,7 @@ Ext.define('Visum.view.Home', {
                     text: 'Send'
                 }]
             }]
-        }*/]
+        }*/
+        ]
     }
 });

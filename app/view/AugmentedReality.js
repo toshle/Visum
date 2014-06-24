@@ -23,32 +23,10 @@ Ext.define('Visum.view.AugmentedReality', {
     },
     initialize: function() {
         this.on('painted', this.showVideo);
-        this.on('painted', this.startWatch);
-    },
-    startWatch: function() {
-        var watchID = null;
-
-        var element = document.querySelector("div#heading");
-
-        function onSuccess(heading) {
-            element.innerHTML = 'Heading: ' + heading.magneticHeading;
-        };
-
-        function onError(compassError) {
-            alert('Compass error: ' + compassError.code);
-        };
-
-        var options = {
-            frequency: 3000
-        }; // Update every 3 seconds
-        if (navigator.compass) {
-            watchID = navigator.compass.watchHeading(onSuccess, onError, options);
-        }
-    },
-    showVideo: function() {
+    }, showVideo: function() {
         var videoSelect = document.querySelector("select#videoSource");
         var videoElement = document.querySelector("video");
-        if (Ext.os.is('Android') || Ext.os.is('iOS')) {
+        if (Ext.os.is('Android') || Ext.os.is('iOS') || Ext.os.is('Other')) {
             navigator.getUserMedia = navigator.getUserMedia ||
                 navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -113,7 +91,7 @@ Ext.define('Visum.view.AugmentedReality', {
             videoElement.style.visibility = 'hidden';
 
             var error = document.querySelector("div#error");
-            error.innerHTML = 'Sorry. This OS doesn\'t support Augmented Reality!';
+            error.innerHTML = 'Sorry. This OS(' + Ext.os.name + ') doesn\'t support Augmented Reality!';
             error.innerHTML += '<br> Augmented reality is meant for mobile devices only.';
         }
     }

@@ -24,17 +24,29 @@ Ext.application({
         'Home',
         'GMap',
         'Profile',
-        'AugmentedReality'
+        'AugmentedReality',
+        'Poi',
+        'Settings'
     ],
 
     models: [
         'User',
-        'Poi'
+        'Poi',
+        'News',
+        'Settings'
+    ],
+
+    controllers: [
+        'WindowController'
     ],
 
     stores: [
         'UserStore',
-        'PoiStore'
+        'PoiStore',
+        'PoiDetailsStore',
+        'LatestPoisStore',
+        'NewsStore',
+        'SettingsStore'
     ],
 
     icon: {
