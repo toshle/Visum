@@ -29,6 +29,7 @@ Ext.define('Visum.view.Home', {
                     });*/
                     var me = this;
                     var id = el.getAttribute('id');
+                    console.log(id);
                     if (el.getAttribute('class') === 'poi modal') {
                         this.fireEvent('firePoiEvent', me, id, null);
                     } else if (el.getAttribute('class') === 'news modal') {
@@ -61,7 +62,17 @@ Ext.define('Visum.view.Home', {
                         //scrollable: false,
                         store: 'LatestPoisStore',
                         minHeight: '260px',
-                        itemTpl: new Ext.XTemplate('{name} - {desc}<br><button class="poi modal" id="{id}" type="button">Read more</button>')
+                        itemTpl: new Ext.XTemplate('{name} - {desc}<br><button class="poi modal" id="{id}" type="button">Read more</button>'),
+                        listeners: {
+                            initialize: function() {
+                                var settings = JSON.parse(localStorage.getItem('settings'));
+                                if (settings['offlinemode']) {
+                                    var store = Ext.getStore('LatestPoisStore');
+                                    var data = JSON.parse(localStorage.getItem('latestPois'));
+                                    store.setData(data);
+                                }
+                            }
+                        }
                     }]
                 }, {
                     items: [{
@@ -73,7 +84,18 @@ Ext.define('Visum.view.Home', {
                         //scrollable: false,
                         store: 'NewsStore',
                         minHeight: '260px',
-                        itemTpl: new Ext.XTemplate('{title} <br><button class="news modal" id="{id}" type="button">Read more</button>')
+                        itemTpl: new Ext.XTemplate('{title} <br><button class="news modal" id="{id}" type="button">Read more</button>'),
+                        listeners: {
+                            initialize: function() {
+                                var settings = JSON.parse(localStorage.getItem('settings'));
+                                console.log(settings);
+                                if (settings['offlinemode']) {
+                                    var store = Ext.getStore('NewsStore');
+                                    var data = JSON.parse(localStorage.getItem('news'));
+                                    store.setData(data);
+                                }
+                            }
+                        }
                     }]
                 }]
             },

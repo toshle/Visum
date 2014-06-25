@@ -29,11 +29,24 @@ Ext.define('Visum.controller.WindowController', {
             det = Ext.create('Visum.view.News');
             Ext.Viewport.add(det);
         }
-        var store = Ext.getStore("NewsStore");
-        store.getProxy().setExtraParams({
-            'nid': id
-        });
-        store.load();
+        var store = Ext.getStore("NewsDetailsStore");
+        var settings = JSON.parse(localStorage.getItem('settings'));
+        if (settings['offlinemode']) {
+            var data = JSON.parse(localStorage.getItem('news'));
+
+            console.log(data);
+            console.log(id);
+            var data = data.find(function(element, index, array) {
+                return element.id == id;
+            });
+            console.log(data);
+            store.setData(data);
+        } else {
+            store.getProxy().setExtraParams({
+                'nid': id
+            });
+            store.load();
+        }
         det.show();
     },
 
@@ -70,15 +83,24 @@ Ext.define('Visum.controller.WindowController', {
             Ext.Viewport.add(det);
         }
         var store = Ext.getStore("PoiDetailsStore");
-        store.getProxy().setExtraParams({
-            'pid': id
-        });
-        store.load(function() {
-            var index = store.find('id', id);
-            var record = store.getAt(index);
-            //console.log(record);
-            record.set('dist', result(record));
-        });
+        var settings = JSON.parse(localStorage.getItem('settings'));
+        if (settings['offlinemode']) {
+            var data = JSON.parse(localStorage.getItem('pois'));
+            var data = data.find(function(element, index, array) {
+                return element.id == id;
+            });
+            store.setData(data);
+        } else {
+            store.getProxy().setExtraParams({
+                'pid': id
+            });
+            store.load(function() {
+                var index = store.find('id', id);
+                var record = store.getAt(index);
+                //console.log(record);
+                record.set('dist', result(record));
+            });
+        }
         /*function(record) {
             //console.log("loaded");
             //console.log(record[0].get('name'));

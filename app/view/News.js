@@ -20,7 +20,7 @@ Ext.define('Visum.view.News', {
     requires: [
         'Visum.model.News',
         'Ext.data.Store',
-        'Visum.store.NewsStore'
+        'Visum.store.NewsDetailsStore'
     ],
     config: {
         id: 'newsOverlay',
@@ -34,7 +34,7 @@ Ext.define('Visum.view.News', {
         hideAnimation: 'slideOut',
         items: [{
             xtype: 'dataview',
-            store: 'NewsStore',
+            store: 'NewsDetailsStore',
             scrollable: null,
             styleHtmlContent: true,
             itemTpl: assembledTemplate
@@ -44,11 +44,5 @@ Ext.define('Visum.view.News', {
             id: 'backToHome',
             text: 'Back'
         }]
-        /*,
-        listeners: {
-            initialize: function() {
-
-            }
-        }*/
     }
 });

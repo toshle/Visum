@@ -46,6 +46,7 @@ Ext.application({
         'PoiDetailsStore',
         'LatestPoisStore',
         'NewsStore',
+        'NewsDetailsStore',
         'SettingsStore'
     ],
 

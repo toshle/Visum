@@ -15,15 +15,15 @@ Ext.define('Visum.view.AugmentedReality', {
                 html: [
                     "<select id='videoSource'></select><br>",
                     "<video id='augreality' autoplay></video><br>",
-                    "<div id='error'></div><br>",
-                    "<div id='heading'>Heading ...</div>"
+                    "<div id='error'></div><br>"
                 ].join("")
             }]
         }]
     },
     initialize: function() {
         this.on('painted', this.showVideo);
-    }, showVideo: function() {
+    },
+    showVideo: function() {
         var videoSelect = document.querySelector("select#videoSource");
         var videoElement = document.querySelector("video");
         if (Ext.os.is('Android') || Ext.os.is('iOS') || Ext.os.is('Other')) {

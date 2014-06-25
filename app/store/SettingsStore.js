@@ -3,15 +3,14 @@ Ext.define('Visum.store.SettingsStore', {
   alias: 'store.SettingsStore',
   requires: [
     'Visum.model.Settings',
+    'Ext.data.proxy.LocalStorage'
   ],
   config: {
     autoLoad: true,
     model: 'Visum.model.Settings',
     proxy: {
       type: 'localstorage',
-      reader: {
-        type: 'json'
-      }
+      id: 'settings'
     }
   }
 });
