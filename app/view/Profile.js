@@ -1,5 +1,10 @@
 var template = new Ext.XTemplate('User: {username} <br> Age: {age}');
-var set = JSON.parse(localStorage.getItem('settings'));
+var set = {
+    offlinemode: 0
+};
+if (localStorage.getItem('settings')) {
+    set = JSON.parse(localStorage.getItem('settings'));
+}
 if (set.offlinemode) {
     template = new Ext.XTemplate('{username}');
 }
@@ -26,7 +31,12 @@ Ext.define('Visum.view.Profile', {
             itemTpl: template,
             listeners: {
                 initialize: function() {
-                    var set = JSON.parse(localStorage.getItem('settings'));
+                    var set = {
+                        offlinemode: 0
+                    };
+                    if (localStorage.getItem('settings')) {
+                        set = JSON.parse(localStorage.getItem('settings'));
+                    }
                     if (set.offlinemode) {
                         this.setData({
                             username: 'You are offline.'

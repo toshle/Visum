@@ -30,7 +30,12 @@ Ext.define('Visum.controller.WindowController', {
             Ext.Viewport.add(det);
         }
         var store = Ext.getStore("NewsDetailsStore");
-        var settings = JSON.parse(localStorage.getItem('settings'));
+        var settings = {
+            offlinemode: 0
+        };
+        if (localStorage.getItem('settings')) {
+            settings = JSON.parse(localStorage.getItem('settings'));
+        }
         if (settings['offlinemode']) {
             var data = JSON.parse(localStorage.getItem('news'));
 
@@ -83,7 +88,13 @@ Ext.define('Visum.controller.WindowController', {
             Ext.Viewport.add(det);
         }
         var store = Ext.getStore("PoiDetailsStore");
-        var settings = JSON.parse(localStorage.getItem('settings'));
+
+        var settings = {
+            offlinemode: 0
+        };
+        if (localStorage.getItem('settings')) {
+            settings = JSON.parse(localStorage.getItem('settings'));
+        }
         if (settings['offlinemode']) {
             var data = JSON.parse(localStorage.getItem('pois'));
             var data = data.find(function(element, index, array) {

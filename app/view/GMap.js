@@ -63,7 +63,12 @@ Ext.define("Visum.view.GMap", {
                 var store = Ext.getStore("PoiStore");
 
                 var me = this;
-                var settings = JSON.parse(localStorage.getItem('settings'));
+                var settings = {
+                    offlinemode: 0
+                };
+                if (localStorage.getItem('settings')) {
+                    settings = JSON.parse(localStorage.getItem('settings'));
+                }
                 if (settings['offlinemode']) {
                     var data = JSON.parse(localStorage.getItem('pois'));
                     data = data.filter(function(entry) {

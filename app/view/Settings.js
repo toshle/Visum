@@ -145,7 +145,7 @@ Ext.define('Visum.view.Settings', {
                         localStorage.setItem('latestPois', JSON.stringify(rec));
                     });
                 }
-
+                //alert(localStorage.getItem('latestPois'));
                 localStorage.setItem('settings', JSON.stringify(set));
                 Ext.Msg.alert('Success', 'Settings are saved');
 
@@ -154,7 +154,9 @@ Ext.define('Visum.view.Settings', {
         listeners: {
             painted: function() {
                 var form = this.child('#form');
-                form.setValues(JSON.parse(localStorage.getItem('settings')));
+                if (localStorage.getItem('settings')) {
+                    form.setValues(JSON.parse(localStorage.getItem('settings')));
+                }
             }
         }
 
